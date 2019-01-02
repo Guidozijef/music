@@ -1,0 +1,167 @@
+body {
+	background-color: #f6f6f6;
+}
+ul {
+	background-color: #fff;
+	margin: 0px;
+	padding: 0px;
+	width: 240px;
+	height: 400px;
+	overflow: auto;
+	/* border: 1px solid #000; */
+}
+ul li {
+	width: 100%;
+	list-style: none;
+	height: 25px;
+	border-bottom: 1px solid #420c5c;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+ul li a {
+	color: #333;
+	line-height: 25px;
+	width: 120px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	float: left;
+	padding-left: 10px;
+	font-family: "Mricosoft Yahei";
+	font-size: 12px;
+	text-decoration: none;
+}
+ul li div {
+	width: 56px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #333;
+	line-height: 25px;
+	float: right;
+	padding-right: 10px;
+	font-size: 12px;
+	font-family: "Mricosoft Yahei";
+}
+#info {
+	width: 150px;
+	height: 30px;
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	position: relative;
+	top: -51px;
+	left: -5px;
+}
+#btn {
+	height: 31px;
+	width: 40px;
+	padding: 0px;
+	margin: 0px;
+	border-left: none;
+	background-color: #420c5c;
+	color: #fff;
+	border: 0px;
+	position: relative;
+	top: -49px;
+	left: -9px;
+}
+#img {
+	width: 70px;
+}
+.music_player {
+	position: absolute;
+	overflow: hidden;
+}
+.list {
+	position: relative;
+	top: -8px;
+}
+.list .present {
+	display: block;
+	padding: 0px;
+	width: 5px;
+	height: 25px;
+	background-color: #420c5c;
+	float: left;
+}
+.icon {
+	position: relative;
+	top: 66px;
+	left: 78px;
+}
+.icon img {
+	width: 20px;
+}
+.icon .strip {
+	width: 50px;
+	height: 4px;
+	background-color: #fff;
+	display: inline-block;
+	position: relative;
+	top: -8px;
+	border-radius: 2px;
+}
+.icon .bar {
+	width: 25px;
+	height: 4px;
+	background-color: #420c5c;
+	display: inline-block;
+	position: relative;
+	top: -8px;
+	left: -108px;
+	border-radius: 2px;
+}
+.icon .circle {
+	width: 50px;
+	height: 10px;
+	/* background-color: #420c5c; */
+	display: inline-block;
+	position: relative;
+	top: -5px;
+	left: -55px;
+}
+.icon .circle span {
+	padding: 0px;
+	width: 10px;
+	height: 10px;
+	background-color: #420c5c;
+	display: block;
+	position: relative;
+	left: 25px;
+	border-radius: 5px;
+}
+.header {
+	position: relative;
+	top: 15px;
+	left: 32px;
+}
+.header span {
+	position: relative;
+	top: -6px;
+	font-size: 23px;
+	color: #420c5c;
+	font-family: "Mricosoft Yahei";
+}
+
+.scrollbar {
+	width: 30px;
+	height: 300px;
+	margin: 0 auto;
+}
+.music_player .list::-webkit-scrollbar {
+	/*滚动条整体样式*/
+	width: 5px; /*  高宽分别对应横竖滚动条的尺寸 */
+	height: 1px;
+}
+
+.music_player .list::-webkit-scrollbar-thumb {
+	/*滚动条里面小方块*/
+	border-radius: 2.5px;
+	-webkit-box-shadow: inset 0 0 5px #420c5c;
+	background: #535353;
+}
+.music_player .list::-webkit-scrollbar-track {
+	/*滚动条里面轨道*/
+	border-radius: 2.5px;
+	-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+	background: #ededed;
+}

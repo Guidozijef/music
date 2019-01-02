@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="referrer" content="never">
+    <script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/music.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/music.css">
+    <title></title>
+</head>
+<body>
+    <div class="music_player">
+        <div class="header">
+            <a href="javascript:;"><img src="img/music.png"></a>
+            <span>听风画雨眠</span>
+        </div>
+         <!-- 播放器面板 -->
+        <div class="icon">
+            <a href="javascript:;"><img src="img/after.png"></a>&ensp;
+            <a href="javascript:;"><img src="img/player.png"></a>&ensp;
+            <a href="javascript:;"><img src="img/betton.png"></a>&ensp;
+            <a href="javascript:;"><img src="img/sound.png"></a>
+            <div class="strip"></div>
+            <div class="circle">
+                <span></span>
+            </div>
+            <div class="bar"></div>
+        </div>
+        <!-- 歌曲图片 -->
+        <img id="img" style="width:70px;"
+         src="http://qukufile2.qianqian.com/data2/pic/0ce88c8cd9127e20ff576a6ad66fe870/576822355/576822355.jpg@s_1,w_90,h_90">
+         <!-- 搜索功能 -->
+        <input type="text" value="" id="info" placeholder="请输入歌曲、歌手" />
+        <button id="btn">搜索</button>
+        <div id="">
+            <audio id="audio" preload="auto" style="width:274px;" src="http://music.163.com/song/media/outer/url?id=449818741.mp3">浏览器太垃圾不支持h5音乐标签</audio>
+        </div>
+        <!-- 播放歌曲列表 -->
+        <ul class="list" style="width:260px; heigth:30px;">
+            <li><span></span><a class="li" href="javascript:;">光年之外</a><div>邓紫棋</div></li>
+            <li><span></span><a class="li" href="javascript:;">半壶纱</a><div>刘珂矣</div></li>
+            <li><span></span><a class="li" href="javascript:;">黄昏</a><div>周传雄</div></li>
+            <li><span></span><a class="li" href="javascript:;">孙大剩</a><div>白亮/赵静</div></li>
+            <li><span></span><a class="li" href="javascript:;">最美的期待</a><div>周笔畅</div></li>
+            <li><span></span><a class="li" href="javascript:;">惊鸿一面</a><div>许嵩</div></li>
+            <li><span></span><a class="li" href="javascript:;">幻听</a><div>许嵩</div></li>
+            <li><span></span><a class="li" href="javascript:;">Something Just Like This</a><div>The Chainsmokers/Coldplay</div></li>
+            <li><span></span><a class="li" href="javascript:;">缺氧</a><div>安苏羽</div></li>
+            <li><span></span><a class="li" href="javascript:;">等我回家</a><div>薛之谦</div></li>
+            <li><span></span><a class="li" href="javascript:;">海阔天空</a><div>Beyong</div></li>
+            <li><span></span><a class="li" href="javascript:;">Right Now</a><div>Am1r</div></li>
+        </ul>
+    </div>
+</body>
+
+</html>
