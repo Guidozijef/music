@@ -3,25 +3,32 @@ $(function() {
 		// $('.music_player .list').html(''); // 每次搜索清除杀你搜索的内容。
 		var value = $('#info').val();
 		$.ajax({
-			type: 'get',
-			url: 'http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.search.catalogSug&query=' + value,
-			async: true,
+			type: 'post',
+			url: 'http://www.gequdaquan.net/gqss/api.php?',
+			data: {
+				types: 'search',
+				count: '20',
+				source: 'netease',
+				pages: '1',
+				name: value
+			},
 			dataType: 'jsonp',
 			success: function(data1) {
-				var songids = data1.song;
-				// console.log(songids.length);
-				for (var i = 0; i < songids.length; i++) {
-					var songid = songids[i].songid;
-					var artistname = songids[i].artistname;
+				// console.log(data1);
+				for (var i = 0; i < data1.length; i++) {
+					var songname = data1[i].name; // 歌曲名
+					var artistname = data1[i].artist[0]; // 歌手名字
 					var li = document.createElement('li');
 					var span = document.createElement('span');
 					var a = document.createElement('a');
 					var div = document.createElement('div');
 					div.innerText = artistname;
+					div.title = artistname;
 					a.href = 'javascript:;'; // a标签加上herf="javascript:;"点击时不会动，而等于#时跳到最上面
-					a.src = songid;
-					var songname = songids[i].songname;
+					a.id = data1[i].id; // 下面获取播放链接需要传入
+					a.img_id = data1[i].pic_id; // 下面获取图片链接需要传入
 					a.textContent = songname;
+					a.title = songname;
 					// var ul = document.getElementsByClassName("list")[0];
 					li.appendChild(span);
 					li.appendChild(a);
@@ -29,24 +36,44 @@ $(function() {
 					// $("list")[0].style.display = "block";
 					$('.music_player .list').append(li);
 					a.onclick = function() {
-						// console.log('a.src:' + this.src);
+						// console.log('a.id:' + this.id);
+						// 获取播放链接地址发的请求
 						$.ajax({
-							type: 'get',
-							url:
-								'http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.song.play&songid=' +
-								this.src,
+							type: 'post',
+							url: 'http://www.gequdaquan.net/gqss/api.php?',
 							async: true,
+							data: {
+								types: 'url',
+								id: this.id,
+								source: 'netease'
+							},
 							dataType: 'jsonp',
-							success: function(data2) {
-								// console.log(data2);
+							success: function(data_url) {
+								// console.log(data_url);
 								var audio = document.getElementById('audio');
-								var img = document.getElementById('img');
-								audio.src = data2.bitrate.file_link;
-								img.src = data2.songinfo.pic_small;
+								audio.src = data_url.url;
 								audio.play();
 								$('.icon a img').eq(1).attr({ src: 'img/pause.png' });
 							}
 						});
+						// 获取图片发的请求
+						$.ajax({
+							type: 'post',
+							url: 'http://www.gequdaquan.net/gqss/api.php?',
+							async: true,
+							data: {
+								types: 'pic',
+								id: this.img_id,
+								source: 'netease'
+							},
+							dataType: 'jsonp',
+							success: function(data_img) {
+								// console.log(data_img);
+								var img = document.getElementById('img');
+								img.src = data_img.url;
+							}
+						});
+
 						// 点击当前a标签就加显示前面的紫色条纹，注意：不能加在ajax里面。
 						$(this).prev('span').addClass('present');
 						$(this).parent().siblings().children('span').removeClass('present');
@@ -241,6 +268,7 @@ $(function() {
 	if (audio) {
 		audio.loop = false;
 		audio.addEventListener(
+			// 检测当前播放的音乐是否结束
 			'ended',
 			function() {
 				$('.icon a img').eq(2).click();
@@ -249,16 +277,4 @@ $(function() {
 			false
 		);
 	}
-
-	// 手机端音乐播放器的隐藏和显示操作
-	$('.music_player .gt').click(function() {
-		var gt = $('.music_player .gt').html();
-		if (gt == '&gt;') {
-			$('.music_player .gt').html('&lt;');
-			$('.music_player').animate({ left: -5 });
-		} else {
-			$('.music_player .gt').html('&gt;');
-			$('.music_player').animate({ left: -265 });
-		}
-	});
 });
